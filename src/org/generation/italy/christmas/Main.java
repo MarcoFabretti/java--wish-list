@@ -10,6 +10,10 @@ public class Main {
 		String s;
 		Scanner in = new Scanner(System.in);
 		ArrayList<String> listaD = new ArrayList<String>();
+		System.out.print("Come ti chiami? ");
+		String nome = in.nextLine();
+		System.out.print("Dove vivi (indirizzo)? ");
+		String indirizzo = in.nextLine();
 
 		while (fine == false) {
 			System.out.print("Aggiungere elemento alla lista desideri: ");
@@ -18,7 +22,6 @@ public class Main {
 				System.out.println("La tua lista contiene 1 desiderio");
 			else
 				System.out.println("La tua lista contiene " + listaD.size() + " desideri");
-
 			do {
 				System.out.print("Continuare? (s/n)");
 				s = in.nextLine();
@@ -30,13 +33,21 @@ public class Main {
 					System.out.println("Input non valido");
 			} while ((!s.equals("n") && !s.equals("s") && fine == false));
 		}
+
 		System.out.println("La tua lista contiene " + listaD.size() + " desideri");
 		System.out.println("La tua lista desideri comprende: ");
 		Collections.sort(listaD);
 		for (String i : listaD) {
 			System.out.println(i);
 		}
-
+		LetteraBabboNatale lettera = new LetteraBabboNatale(nome, indirizzo, listaD);
+		try {
+		System.out.println("nome: " + lettera.invia());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		System.out.println("Fine Programma");
 		in.close();
 	}
 
